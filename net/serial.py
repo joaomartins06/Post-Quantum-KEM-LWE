@@ -1,4 +1,15 @@
 import numpy as np
+import struct   
+from lwe.params import LWEParams
+
+def params_to_bytes(params) -> bytes:
+    #realistically, we also have to send the parameters
+    #they are usually part of the "public key" in real implementations
+    return struct.pack('>IIId', params.n, params.q, params.m, params.sigma)
+
+def params_from_bytes(data: bytes):
+    n, q, m, sigma = struct.unpack('>IIId', data)
+    return LWEParams(n=int(n), q=int(q), m=int(m), sigma=float(sigma))
 
 
 def pk_to_bytes(pk):

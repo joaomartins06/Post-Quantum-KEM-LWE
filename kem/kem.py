@@ -24,7 +24,7 @@ def encaps(pk, params: LWEParams = DEFAULT_PARAMS):
     #compute the cyphertext (u, v)
     cyphertext = (u, v)
 
-    return cyphertext, mu
+    return cyphertext, mu.astype(np.uint8)
 
 
 def decaps(cyphertext, sk, params: LWEParams = DEFAULT_PARAMS):
