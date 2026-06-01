@@ -7,16 +7,19 @@ Then, as Python was a bit simple and I miss doing something in C, I decided to i
 
 ## Structure
 
+<pre>
 Post-Quantum-KEM-LWE/
-python/
-lwe/        # primitives: sampler, modular ops, params
-kem/        # keygen, encaps, decaps, kdf
-net/        # tcp server, client, wire protocol
-tests/      # pytest
-c/
-include/    # header files
-src/        # source files
-tests/      # test programs
+├── python/
+│   ├── lwe/        # primitives: sampler, modular ops, params
+│   ├── kem/        # keygen, encaps, decaps, kdf
+│   ├── net/        # tcp server, client, wire protocol
+│   └── tests/      # pytest
+└── c/
+    ├── include/    # header files
+    ├── src/        # source files
+    ├── tests/      # test programs
+    └── Makefile
+</pre>
 Makefile
 
 
