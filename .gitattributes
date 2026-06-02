@@ -1,1 +1,6 @@
-*.ipynb linguist-vendored
+* linguist-vendored
+*.c linguist-vendored=false linguist-language=C
+*.h linguist-vendored=false linguist-language=C
+*.py linguist-vendored=false linguist-language=Python
+Makefile linguist-vendored=false linguist-language=Makefile
+*.ipynb linguist-vendored=true
