@@ -5,3 +5,4 @@
 Makefile linguist-vendored=false linguist-language=Makefile
 *.ipynb linguist-vendored=true
 python/net/*.py linguist-vendored=true
+python/tests/*.py linguist-vendored=true
