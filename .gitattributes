@@ -4,3 +4,4 @@
 *.py linguist-vendored=false linguist-language=Python
 Makefile linguist-vendored=false linguist-language=Makefile
 *.ipynb linguist-vendored=true
+python/net/*.py linguist-vendored=true
