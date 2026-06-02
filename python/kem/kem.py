@@ -30,8 +30,8 @@ def encaps(pk, params: LWEParams = DEFAULT_PARAMS):
 def decaps(cyphertext, sk, params: LWEParams = DEFAULT_PARAMS):
 
     u, v = cyphertext
-
-    #w = v - u * s mod q
+    
+    #w = v - u^T * sk mod q
     w = (v - u.T @ sk) % params.q
     w_new = np.zeros(w.shape, dtype=np.uint8)
 

@@ -10,7 +10,7 @@ typedef struct {
 
 
 typedef struct {
-    int64_t *sk;  
+    int64_t *s;  
 } SecretKey;
 
 

@@ -1,5 +1,5 @@
 CC      = gcc
-CFLAGS  = -std=c99 -Wall -Wextra -Wpedantic -Wconversion -O2 -g
+CFLAGS  = -std=c99 -Wall -Wextra -Wpedantic -Wconversion -O3 -g
 IFLAGS  = -Iinclude
 SANFLAGS = -fsanitize=address,undefined
 
@@ -14,7 +14,7 @@ build/%.o: src/%.c | build
 	$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
 
 build/test_kem: tests/test_kem.c $(OBJ) | build
-	$(CC) $(CFLAGS) $(IFLAGS) $(SANFLAGS) $^ -o $@
+	$(CC) $(CFLAGS) $(IFLAGS) $(SANFLAGS) $^ -o $@ -lm -lcrypto
 
 build:
 	mkdir -p build
