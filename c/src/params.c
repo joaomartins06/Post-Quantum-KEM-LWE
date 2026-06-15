@@ -2,7 +2,7 @@
 
 const LWEParams DEFAULT_PARAMS = {
     .n = 256,
-    .q = 12289,
+    .q = 3329,
     .m = 512,
     .sigma = 3.2
 };

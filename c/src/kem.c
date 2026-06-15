@@ -49,7 +49,7 @@ void encaps(PublicKey *pk, Ciphertext *ct, uint8_t *shared_secret, const LWEPara
 
     //compute v = aux + (q/2)*mu (mod q)
     for (int32_t i = 0; i < params -> n; i++){
-        ct -> v[i] = mod_add(aux[i], (params -> q / 2) * shared_secret[i], params -> q);
+        ct -> v[i] = mod_add(aux[i], ((params -> q) / 2) * shared_secret[i], params -> q);
     }
 
     free(R);

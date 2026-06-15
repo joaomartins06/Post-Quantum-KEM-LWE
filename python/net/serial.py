@@ -2,10 +2,12 @@ import numpy as np
 import struct   
 from lwe.params import LWEParams
 
+
 def params_to_bytes(params) -> bytes:
     #realistically, we also have to send the parameters
     #they are usually part of the "public key" in real implementations
     return struct.pack('>IIId', params.n, params.q, params.m, params.sigma)
+
 
 def params_from_bytes(data: bytes):
     n, q, m, sigma = struct.unpack('>IIId', data)
@@ -20,7 +22,6 @@ def pk_to_bytes(pk):
 
 
 def pk_from_bytes(data, params) -> tuple:
-
     #each int64 has 8 bytes, so we split the data at 8*m*n
     A_bytes = data[:params.m * params.n * 8] 
     b_bytes = data[params.m * params.n * 8:] 

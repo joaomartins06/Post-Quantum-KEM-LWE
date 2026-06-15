@@ -3,7 +3,7 @@ CFLAGS  = -std=c99 -Wall -Wextra -Wpedantic -Wconversion -O3 -g
 IFLAGS  = -Iinclude
 SANFLAGS = -fsanitize=address,undefined
 
-SRC     = src/params.c src/modular.c src/sampler.c src/keygen.c src/kem.c src/kdf.c
+SRC     = src/params.c src/modular.c src/sampler.c src/keygen.c src/kem.c src/kdf.c src/wire.c src/serial.c
 OBJ     = $(SRC:src/%.c=build/%.o)
 
 .PHONY: all clean

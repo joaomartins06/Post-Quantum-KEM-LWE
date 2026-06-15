@@ -21,7 +21,7 @@ void keygen(PublicKey *pk, SecretKey *sk, const LWEParams *params){
     //generate the public key A
     for (int32_t i = 0; i < params -> m; i++){
         for (int32_t j = 0; j < params -> n; j++){
-            pk -> A[i*params -> n + j] = sample_uniform(params -> q);
+            pk -> A[i*(params -> n) + j] = sample_uniform(params -> q);
         }
         //After computing row i, we can compute b[i] = A[i]*s + e
         //right away by generating the error and using s from previous loop

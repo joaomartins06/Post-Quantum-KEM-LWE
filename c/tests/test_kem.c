@@ -29,7 +29,7 @@ int main(void){
     for (int i = 0; i < tries; i++){
         encaps(&pk, &ct, shared_secret_enc, params);
         decaps(&sk, &ct, shared_secret_dec, params);
-        int match = (memcmp(shared_secret_enc, shared_secret_dec, 256) == 0);
+        int match = (memcmp(shared_secret_enc, shared_secret_dec, (size_t)params->n) == 0);
         if (!match) fails++;
         free(ct.u);
         free(ct.v);
