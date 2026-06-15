@@ -7,6 +7,7 @@
 #include "serial.h"
 #include "keygen.h"
 
+
 int main(){
     LWEParams params = { .n = 4, .q = 16, .m = 4, .sigma = 3.2 };
     uint8_t params_bytes[4 * sizeof(int) + sizeof(double)];
