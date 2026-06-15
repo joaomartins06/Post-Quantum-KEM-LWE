@@ -1,9 +1,11 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
 #include "params.h"
 #include "types.h"
 #include "serial.h"
-#include <stdio.h>
-#include <string.h>
-
+#include "keygen.h"
 
 int main(){
     LWEParams params = { .n = 4, .q = 16, .m = 4, .sigma = 3.2 };
@@ -20,5 +22,34 @@ int main(){
         printf("LWEParams serialization/deserialization failed.\n");
     }
     
+
+    PublicKey* pk;
+    SecretKey* sk;
+    pk = malloc(sizeof(PublicKey));
+    sk = malloc(sizeof(SecretKey));
+
+    keygen(pk, sk, &params);
+    uint8_t pk_bytes[((size_t)params.m) * ((size_t)params.n) * sizeof(int64_t) + ((size_t)params.m) * sizeof(int64_t)];
+    pk_to_bytes(pk, &params, pk_bytes);
+
+    PublicKey* deserialized_pk = malloc(sizeof(PublicKey));
+    pk_from_bytes(pk_bytes, &params, deserialized_pk);
+    
+    if (memcmp(pk->A, deserialized_pk->A, ((size_t)params.m) * ((size_t)params.n) * sizeof(int64_t)) == 0 &&
+        memcmp(pk->b, deserialized_pk->b, ((size_t)params.m) * sizeof(int64_t)) == 0) {
+        printf("PublicKey serialization/deserialization successful!\n");
+    } else {
+        printf("PublicKey serialization/deserialization failed.\n");
+    }
+
+    free(pk->A);
+    free(pk->b);
+    free(pk);
+    free(sk->s);
+    free(sk);
+    free(deserialized_pk->A);
+    free(deserialized_pk->b);
+    free(deserialized_pk);  
+
     return 0;
 }
