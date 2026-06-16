@@ -33,6 +33,4 @@ void keygen(PublicKey *pk, SecretKey *sk, const LWEParams *params){
         //add error by sampling it inside the mod_add()
         pk -> b[i] = mod_add(sum, sample_error(params -> sigma), params -> q);
     }
-
-
 }
